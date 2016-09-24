@@ -12,6 +12,8 @@ int main(void)
     int i = 0;
     char append[50], find[50];
     double orig_sum_a = 0.0, orig_sum_f = 0.0, orig_a, orig_f;
+    
+
     for (i = 0; i < 100; i++) {
         if (feof(fp)) {
             printf("ERROR: You need 100 datum instead of %d\n", i);
@@ -24,9 +26,13 @@ int main(void)
     }
     fclose(fp);
 
+
+
+
+
     fp = fopen("opt.txt", "r");
     if (!fp) {
-        fp = fopen("orig.txt", "r");
+        fp = fopen("opt.txt", "w");
         if (!fp) {
             printf("ERROR opening input file opt.txt\n");
             exit(0);
