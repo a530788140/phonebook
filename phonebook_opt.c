@@ -8,15 +8,17 @@
 /* original version */
 entry *findName(char lastname[], entry *root)
 {
+
 	while (root != NULL) {
 		if (strcasecmp(lastname, root->lastName) == 0) {
 			return root;
+		} else {
+			if (strcasecmp(lastname, root->lastName)) {
+				root = root->rNext;
+			}
+			else
+				root = root->lNext;
 		}
-		else if (strlen(root->lastName) > strlen(lastname)) {
-			root = root->rNext;
-		}
-		else
-			root = root->lNext;
 	}
 	return NULL;
 }
@@ -37,12 +39,12 @@ entry *append(char lastName[], entry *root)
 		current = root;
 		while (current != NULL) {
 			parent = current;
-			if (strlen(current->lastName) > strlen(lastName))
+			if (strcasecmp(lastName, current->lastName))
 				current = current->rNext;
 			else
 				current = current->lNext;
 		}
-		if (strlen(parent->lastName) > strlen(lastName))
+		if (strcasecmp(lastName, parent->lastName))
 			parent->rNext = tmp;
 		else
 			parent->lNext = tmp;
@@ -67,3 +69,19 @@ void show_tree(entry *root)
 		show_tree(root->lNext);
 	}
 }
+/*
+int str_num(char *ptr1, char *ptr2)
+{
+	while (*ptr1 != '\0' && *ptr2 != '\0') {
+		if (*ptr1 > *ptr2)
+			return 1;
+		else if (*ptr1 < *ptr2)
+			return 0;
+		else {
+			ptr1++;
+			ptr2++;
+		}
+	}
+	return 0;
+}
+*/

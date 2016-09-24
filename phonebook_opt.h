@@ -16,5 +16,5 @@ entry *findName(char lastname[], entry *root);
 entry *append(char lastName[], entry *root);
 void free_tree(entry *root);
 void show_tree(entry *root);
-
+//int str_num(char *ptr1,char *ptr2);
 #endif

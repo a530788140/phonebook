@@ -6,7 +6,7 @@
 
 #include IMPL
 
-#define DICT_FILE "./dictionary/words.txt"
+#define DICT_FILE "./dictionary/words1.txt"
 
 static double diff_in_second(struct timespec t1, struct timespec t2)
 {
@@ -39,15 +39,17 @@ int main(int argc, char *argv[])
     /* build the entry */
     entry *pHead, *e;
     pHead = (entry *) malloc(sizeof(entry));
+    printf("start");
     printf("size of entry : %lu bytes\n", sizeof(entry));
+    printf("end");
     e = pHead;
+
 #if defined(OPT)
     e->rNext = e->lNext = NULL; 
 #else
     e->pNext = NULL;
 #endif
 
-printf("start");
 #if defined(__GNUC__)
     __builtin___clear_cache((char *) pHead, (char *) pHead + sizeof(entry));
 #endif
@@ -99,7 +101,6 @@ printf("start");
 #if defined(OPT)
     free_tree(pHead);
 #else
-
     if (pHead->pNext) free(pHead->pNext);
     free(pHead);
 #endif
